@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import Flower, { FlowerDefs } from "./Flower";
 import { PALETTE } from "./palette";
-import { ROSES, DAISIES } from "./roses";
+import { ROSES, DAISIES, TULIPS } from "./heads";
 
 // Bộ sinh số ngẫu nhiên có seed để vườn hoa lần nào mở cũng giống nhau
 function seeded(seed) {
@@ -14,12 +14,12 @@ function seeded(seed) {
   };
 }
 
-// hồng nhiều lớp và cúc họa mi là chính, điểm xuyết tulip và cúc mâm xôi
+// hồng nhiều lớp và cúc họa mi là chính, thêm tulip và điểm xuyết cúc mâm xôi
 function pickType(r) {
   const v = r();
-  if (v < 0.52) return "rose";
-  if (v < 0.84) return "daisy";
-  if (v < 0.95) return "tulip";
+  if (v < 0.48) return "rose";
+  if (v < 0.78) return "daisy";
+  if (v < 0.96) return "tulip";
   return "mum";
 }
 
@@ -43,6 +43,7 @@ function makeFlowers({ count, h, bottom, seed, name }) {
     let img;
     if (type === "rose") img = name === "hero" ? ROSES[16] : ROSES[Math.floor(r() * ROSES.length)];
     if (type === "daisy") img = DAISIES[Math.floor(r() * DAISIES.length)];
+    if (type === "tulip") img = TULIPS[Math.floor(r() * TULIPS.length)];
     let x = ((i + r() * 0.9) / count) * 100;
     if (name === "near") x = i % 2 === 0 ? r() * 22 - 6 : 84 + r() * 22 - 6;
     if (name === "hero") x = 50;

@@ -1,4 +1,4 @@
-// Hoa trong vườn: hồng và cúc họa mi dùng ảnh dựng sẵn; tulip và cúc mâm xôi vẽ SVG tô bóng.
+// Hoa trong vườn: hồng, cúc họa mi, tulip dùng ảnh dựng sẵn; cúc mâm xôi vẽ SVG tô bóng.
 // viewBox 100 x 200: bông ở trên (tâm ~ 50,40), thân chạy xuống đáy.
 // Gradient dùng chung nằm trong <FlowerDefs />, render một lần cho cả trang.
 import { PALETTE } from "./palette";
@@ -18,23 +18,6 @@ function ColorDefs({ c }) {
   const k = id(c);
   return (
     <>
-      {/* tulip: chân hơi xanh, đỉnh sáng */}
-      <linearGradient id={`tf-${k}`} x1="0" y1="1" x2="0" y2="0">
-        <stop offset="0" stopColor={mix(c, "#5b7f1e", 0.5)} />
-        <stop offset="0.28" stopColor={dark(c, 0.12)} />
-        <stop offset="0.75" stopColor={c} />
-        <stop offset="1" stopColor={light(c, 0.35)} />
-      </linearGradient>
-      <linearGradient id={`ts-${k}`} x1="0" y1="0" x2="1" y2="0">
-        <stop offset="0" stopColor={dark(c, 0.45)} />
-        <stop offset="0.65" stopColor={c} />
-        <stop offset="1" stopColor={light(c, 0.25)} />
-      </linearGradient>
-      <linearGradient id={`tsr-${k}`} x1="1" y1="0" x2="0" y2="0">
-        <stop offset="0" stopColor={dark(c, 0.45)} />
-        <stop offset="0.65" stopColor={c} />
-        <stop offset="1" stopColor={light(c, 0.25)} />
-      </linearGradient>
       {/* cánh cúc mâm xôi: gốc đậm, đầu cánh sáng */}
       <linearGradient id={`dp-${k}`} x1="0" y1="1" x2="0" y2="0">
         <stop offset="0" stopColor={dark(c, 0.35)} />
@@ -47,7 +30,6 @@ function ColorDefs({ c }) {
 
 export function FlowerDefs() {
   const colors = new Set([
-    ...PALETTE.tulip,
     ...PALETTE.mum,
   ]);
   return (
@@ -79,11 +61,21 @@ export function FlowerDefs() {
   );
 }
 
-function Stem({ lean }) {
+function Stem({ lean, tulip }) {
   const mx = 50 + lean;
   return (
     <g>
       <path d={`M50 64 Q${mx} 130 50 200`} stroke="url(#stem-g)" strokeWidth="4.2" fill="none" strokeLinecap="round" />
+      {tulip && (
+        <>
+          {/* lá tulip to, dài, ôm lấy thân */}
+          <path d="M50 200 C26 170 18 120 30 78 C38 118 46 158 56 200Z" fill="url(#leaf-g)" />
+          <path d="M48 200 C74 176 84 140 78 104 C68 140 58 170 44 200Z" fill="url(#leaf-g)" opacity="0.92" />
+          <path d="M49 196 C34 160 30 120 31 84" stroke="#c9efb4" strokeOpacity="0.5" strokeWidth="0.8" fill="none" />
+        </>
+      )}
+      {!tulip && (
+      <>
       <g transform={`translate(${50 + lean * 0.55} 128) rotate(-38)`}>
         <path d="M0 0 C10 -10 30 -12 44 -4 C30 6 12 8 0 0Z" fill="url(#leaf-g)" />
         <path d="M2 -0.5 C16 -5 30 -5 42 -4" stroke="#bfe8a8" strokeOpacity="0.55" strokeWidth="0.8" fill="none" />
@@ -92,26 +84,8 @@ function Stem({ lean }) {
         <path d="M0 0 C10 -9 28 -11 40 -3 C28 6 12 7 0 0Z" fill="url(#leaf-g)" />
         <path d="M2 -0.5 C14 -4 27 -4 38 -3" stroke="#bfe8a8" strokeOpacity="0.5" strokeWidth="0.8" fill="none" />
       </g>
-    </g>
-  );
-}
-
-function Tulip({ c }) {
-  const k = id(c);
-  return (
-    <g className="head">
-      {/* cánh sau */}
-      <path d="M31 48 C24 34 26 16 35 6 C40 16 44 24 48 30 Z" fill={dark(c, 0.3)} />
-      <path d="M69 48 C76 34 74 16 65 6 C60 16 56 24 52 30 Z" fill={dark(c, 0.3)} />
-      {/* cánh hai bên */}
-      <path d="M28 44 C24 28 28 14 38 8 C44 20 48 34 50 56 C40 58 31 54 28 44Z" fill={`url(#ts-${k})`} />
-      <path d="M72 44 C76 28 72 14 62 8 C56 20 52 34 50 56 C60 58 69 54 72 44Z" fill={`url(#tsr-${k})`} />
-      {/* cánh trước */}
-      <path d="M36 50 C33 32 38 16 50 6 C62 16 67 32 64 50 C58 58 42 58 36 50Z" fill={`url(#tf-${k})`} />
-      {/* gân + bóng sáng */}
-      <path d="M50 54 C49 40 49 24 50 10" stroke={dark(c, 0.3)} strokeOpacity="0.25" strokeWidth="0.8" fill="none" />
-      <path d="M44 52 C42 40 43 26 46 16 M56 52 C58 40 57 26 54 16" stroke={light(c, 0.5)} strokeOpacity="0.3" strokeWidth="0.7" fill="none" />
-      <ellipse cx="43" cy="26" rx="3.5" ry="11" fill="url(#shine)" transform="rotate(8 43 26)" />
+      </>
+      )}
     </g>
   );
 }
@@ -151,12 +125,12 @@ function Mum({ c }) {
 }
 
 export default function Flower({ type, color, lean = 0, img }) {
-  if (type === "rose" || type === "daisy") {
+  if (type !== "mum") {
     return (
       <>
         <svg viewBox="0 0 100 200" className="flower-svg" aria-hidden="true">
-          <Stem lean={lean} />
-          {[-55, 0, 55].map((a) => (
+          <Stem lean={lean} tulip={type === "tulip"} />
+          {type === "rose" && [-55, 0, 55].map((a) => (
             <path key={a} d="M0 0 C-4 6 -2 16 0 20 C2 16 4 6 0 0Z" fill="url(#sepal-g)" transform={`translate(50 50) rotate(${a + 180})`} />
           ))}
         </svg>
@@ -167,8 +141,7 @@ export default function Flower({ type, color, lean = 0, img }) {
   return (
     <svg viewBox="0 0 100 200" className="flower-svg" aria-hidden="true">
       <Stem lean={lean} />
-      {type === "tulip" && <Tulip c={color} />}
-      {type === "mum" && <Mum c={color} />}
+      <Mum c={color} />
     </svg>
   );
 }
