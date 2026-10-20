@@ -125,3 +125,33 @@ export const birthday = [
   { text: "Sinh nhật vui vẻ nha, công chúa của Đông!", size: "xxl", rainbow: true },
   { text: "Thương Tiên nhiều lắm.", size: "xl", special: true },
 ];
+
+// Thư 20/10 — phần trước và sau bộ đếm ngày
+export const springBefore = [
+  { text: "Tiên ơi,", size: "xl", special: true },
+  { text: "Hôm nay là 20/10 nè,", size: "md" },
+  { text: "ngày của các cô gái, mà với Đông thì cô gái đặc biệt nhất vẫn là Tiên.", size: "lg" },
+  { text: "Đông chưa tặng Tiên bó hoa thiệt được,", size: "md" },
+  { text: "nên Đông trồng hẳn một vườn hoa ở đây luôn.", size: "lg" },
+  { text: "Hoa hồng nè, hoa cúc nè, tulip nè,", size: "xl", rainbow: true },
+  { text: "đủ màu đủ kiểu, mà hỏng có bông nào xinh bằng Tiên hết.", size: "lg", special: true },
+  { text: "Tính ra từ ngày", size: "sm" },
+];
+
+export const springAfter = [
+  { text: "Có ngày vui, có ngày giận dỗi, có ngày nhớ nhau muốn xỉu,", size: "md" },
+  { text: "nhưng ngày nào Đông cũng thấy mình may mắn vì người bên cạnh là Tiên.", size: "lg" },
+  { text: "Cảm ơn Tiên đã kiên nhẫn với Đông,", size: "md" },
+  { text: "đã chờ Đông, đã thương Đông theo cách dịu dàng nhất.", size: "lg" },
+
+  { text: "20/10 này, Đông chúc Tiên", size: "sm" },
+  { text: "luôn được yêu thương,", size: "xl", rainbow: true },
+  { text: "luôn được nâng niu,", size: "xl", rainbow: true },
+  { text: "và lúc nào cũng rạng rỡ như nắng sớm.", size: "xl", rainbow: true },
+  { text: "Mệt thì có Đông, buồn thì có Đông, còn vui thì càng phải kể Đông nghe nha.", size: "md" },
+
+  { text: "Vườn hoa này cứ để ở đây, nở hoài hỏng tàn,", size: "lg" },
+  { text: "giống như cách Đông thương Tiên vậy.", size: "xxl", special: true },
+  { text: "Chúc mừng 20/10, cô gái của Đông.", size: "xxl", rainbow: true },
+  { text: "20 - 10 - 2026", size: "lg" },
+];
