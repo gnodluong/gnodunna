@@ -166,7 +166,7 @@ export const annivIntro = [
 
 export const annivChapters = [
   {
-    caption: "Khoảnh khắc thứ nhất",
+    caption: "Tiên trong chiếc mũ gấu",
     lines: [
       { text: "Nếu ai hỏi 638 ngày dài cỡ nào,", size: "md" },
       { text: "Đông sẽ nói: đủ để Đông thuộc lòng nụ cười của Tiên,", size: "lg" },
@@ -174,7 +174,7 @@ export const annivChapters = [
     ],
   },
   {
-    caption: "Khoảnh khắc thứ hai",
+    caption: "Nắm tay trong rạp phim",
     lines: [
       { text: "Hồi mới quen, Đông đâu có nghĩ", size: "md" },
       { text: "sẽ có ngày mình thương một người nhiều tới vậy.", size: "lg" },
@@ -182,7 +182,7 @@ export const annivChapters = [
     ],
   },
   {
-    caption: "Khoảnh khắc thứ ba",
+    caption: "Bên hồ, Đà Lạt",
     lines: [
       { text: "Tụi mình đã đi qua những ngày nắng gắt, những cơn mưa bất chợt,", size: "md" },
       { text: "đi qua cả những cái Tết có nhau.", size: "lg" },
@@ -190,7 +190,7 @@ export const annivChapters = [
     ],
   },
   {
-    caption: "Khoảnh khắc thứ tư",
+    caption: "Ngọn đồi lộng gió",
     lines: [
       { text: "Rồi tới ngày Đông lên đường nhập ngũ.", size: "lg" },
       { text: "Đông biết hôm đó Tiên đã cố cười để Đông yên tâm.", size: "md" },
@@ -198,7 +198,7 @@ export const annivChapters = [
     ],
   },
   {
-    caption: "Khoảnh khắc thứ năm",
+    caption: "Ngày Tiên lên thăm",
     lines: [
       { text: "Từ ngày đó, tuần nào Tiên cũng lặn lội lên thăm Đông.", size: "lg" },
       { text: "Mỗi lần thấy Tiên từ xa đi tới,", size: "md" },
@@ -206,7 +206,7 @@ export const annivChapters = [
     ],
   },
   {
-    caption: "Khoảnh khắc thứ sáu",
+    caption: "Đông chụp lén Tiên",
     lines: [
       { text: "Đông biết ở ngoài kia Tiên cũng vất vả lắm.", size: "md" },
       { text: "Vừa lo công việc, vừa lo cho Đông, vừa tự mình đi qua những đêm nhớ nhau.", size: "md" },
@@ -214,7 +214,7 @@ export const annivChapters = [
     ],
   },
   {
-    caption: "Khoảnh khắc thứ bảy",
+    caption: "Hai cái mặt ngố",
     lines: [
       { text: "Có những ngày tụi mình giận nhau, chẳng ai chịu ai.", size: "md" },
       { text: "Nhưng giận xong, người tìm lại nhau vẫn luôn là tụi mình.", size: "lg" },
@@ -222,7 +222,7 @@ export const annivChapters = [
     ],
   },
   {
-    caption: "Khoảnh khắc thứ tám",
+    caption: "Phố đêm lên đèn",
     lines: [
       { text: "Tháng Mười này Tiên vừa thêm một tuổi,", size: "md" },
       { text: "vừa qua 20/10, giờ lại tới ngày kỷ niệm.", size: "md" },
@@ -230,7 +230,7 @@ export const annivChapters = [
     ],
   },
   {
-    caption: "Khoảnh khắc thứ chín",
+    caption: "Áo dài hồng, sơ mi trắng",
     lines: [
       { text: "Đông không hứa những điều quá xa xôi.", size: "md" },
       { text: "Đông chỉ hứa: mỗi ngày, Đông sẽ thương Tiên thêm một chút,", size: "lg" },
@@ -238,7 +238,7 @@ export const annivChapters = [
     ],
   },
   {
-    caption: "Khoảnh khắc thứ mười",
+    caption: "Trong gương, có tụi mình",
     lines: [
       { text: "Rồi sẽ tới ngày Đông về.", size: "lg" },
       { text: "Lúc đó Đông muốn dắt Tiên đi hết những nơi tụi mình từng hẹn,", size: "md" },

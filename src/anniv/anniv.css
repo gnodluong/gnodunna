@@ -628,3 +628,172 @@
   }
   .pt-sketch path { stroke-dashoffset: 0; }
 }
+
+/* ===== Cảnh điện ảnh: cẩu máy nhìn xuống thảm hoa, ảnh rơi xuống ===== */
+.scene {
+  position: relative;
+  margin: 6vh auto 0;
+  width: min(100%, 1000px);
+  height: clamp(520px, 92vh, 860px);
+  perspective: 1100px;
+  perspective-origin: 50% 20%;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 9%, #000 91%, transparent);
+  mask-image: linear-gradient(to right, transparent, #000 9%, #000 91%, transparent);
+}
+
+.stage {
+  position: absolute;
+  inset: -6% -10%;
+  transform-style: preserve-3d;
+  transform: rotateX(48deg) scale(1.25) translateY(6%);
+  transition: transform 2.6s cubic-bezier(.25, .1, .2, 1);
+}
+
+.scene.dropped .stage {
+  transform: rotateX(10deg) scale(1) translateY(0);
+  animation: crane-drift 14s ease-in-out 2.6s infinite alternate;
+}
+
+.scene.flip.dropped .stage {
+  animation-direction: alternate-reverse;
+}
+
+@keyframes crane-drift {
+  from { transform: rotateX(10deg) rotateZ(-1.2deg) scale(1); }
+  to { transform: rotateX(13deg) rotateZ(1.2deg) scale(1.04); }
+}
+
+.bed,
+.rim {
+  position: absolute;
+  inset: 0;
+}
+
+.rim {
+  z-index: 4;
+  pointer-events: none;
+}
+
+.rim .bloom-field {
+  pointer-events: none;
+}
+
+/* mép trên/dưới của thảm hoa mờ vào giấy */
+.scene::before,
+.scene::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 14%;
+  z-index: 6;
+  pointer-events: none;
+}
+
+.scene::before { top: 0; background: linear-gradient(#efe5cf, rgba(239, 229, 207, 0)); }
+.scene::after { bottom: 0; background: linear-gradient(rgba(239, 229, 207, 0), #efe5cf); }
+
+/* tấm ảnh in rơi xuống */
+.print {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 3;
+  width: min(60%, 440px);
+  padding: 12px 12px 0;
+  background: #fbf7ee;
+  box-shadow: 0 1px 2px rgba(60, 40, 20, 0.25), 0 0 0 1px rgba(90, 70, 50, 0.12);
+  --rest: -4deg;
+  transform: translate(-50%, -50%) translateZ(520px) translateY(-70%) rotate(-28deg) scale(1.3);
+  opacity: 0;
+}
+
+.scene.flip .print { --rest: 3.5deg; }
+
+.scene.dropped .print {
+  animation: drop 1.9s cubic-bezier(.3, .05, .35, 1) 0.5s forwards;
+}
+
+@keyframes drop {
+  0% { opacity: 0; transform: translate(-50%, -50%) translateZ(520px) translateY(-70%) rotate(-28deg) scale(1.3); }
+  15% { opacity: 1; }
+  55% { transform: translate(-50%, -50%) translateZ(90px) translateY(-6%) rotate(calc(var(--rest) + 9deg)) scale(1.04); }
+  78% { transform: translate(-50%, -50%) translateZ(8px) translateY(1%) rotate(calc(var(--rest) - 2deg)) scale(1); }
+  90% { transform: translate(-50%, -50%) translateZ(16px) translateY(0) rotate(calc(var(--rest) + 1deg)) scale(1); }
+  100% { opacity: 1; transform: translate(-50%, -50%) translateZ(2px) rotate(var(--rest)) scale(1); }
+}
+
+.print-shadow {
+  position: absolute;
+  left: 50%;
+  top: 52%;
+  z-index: 2;
+  width: min(58%, 420px);
+  aspect-ratio: 4 / 5;
+  transform: translate(-50%, -50%) rotate(-4deg) scale(1.6);
+  background: rgba(40, 25, 15, 0.45);
+  filter: blur(40px);
+  opacity: 0;
+}
+
+.scene.dropped .print-shadow {
+  animation: shadow-land 1.9s cubic-bezier(.3, .05, .35, 1) 0.5s forwards;
+}
+
+@keyframes shadow-land {
+  0% { opacity: 0; transform: translate(-50%, -50%) rotate(-20deg) scale(1.7); filter: blur(60px); }
+  100% { opacity: 1; transform: translate(-50%, -50%) rotate(-3deg) scale(1.02); filter: blur(14px); }
+}
+
+.print-photo img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 58vh;
+  object-fit: cover;
+}
+
+.print figcaption {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.6rem;
+  padding: 0.55rem 0.2rem 0.75rem;
+  font-family: "Cormorant Garamond", serif;
+}
+
+.print figcaption em {
+  font-weight: 700;
+  font-size: clamp(1.05rem, 3.2vw, 1.4rem);
+  color: #3a2a20;
+  text-align: right;
+}
+
+.print-fig {
+  flex: none;
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  color: #8a7360;
+}
+
+.print .bird.perched {
+  bottom: calc(100% - 10px);
+}
+
+.scene .hoverer {
+  z-index: 7;
+}
+
+@media (max-width: 600px) {
+  .scene { height: clamp(460px, 80vh, 640px); perspective: 800px; }
+  .print { width: 50%; padding: 7px 7px 0; }
+  .print-shadow { width: 48%; }
+  .print-photo img { max-height: 46vh; }
+  .stage { inset: -6% -24%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .stage, .scene.dropped .stage { transform: none; transition: none; }
+  .print, .print-shadow { opacity: 1; transform: translate(-50%, -50%) rotate(var(--rest)); }
+}

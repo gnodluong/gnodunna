@@ -54,7 +54,26 @@ function strip(r, n) {
   }
   return out;
 }
-const LAYOUTS = { meadow, frame, strip };
+// thảm hoa nhìn từ trên xuống: phủ kín, mỗi bông xoay một hướng
+function bed(r, n) {
+  const out = [];
+  const cols = Math.ceil(Math.sqrt(n * 1.3)), rows = Math.ceil(n / cols);
+  for (let i = 0; i < n; i++) {
+    const c = i % cols, rw = Math.floor(i / cols);
+    out.push({ x: (c + r()) / cols * 1.1 - 0.05, y: (rw + r()) / rows * 1.1 - 0.05, h: 0.13 + r() * 0.14, depth: r(), foliage: r() < 0.28, rot: r() * 6.283 });
+  }
+  return out.sort((a, b) => a.depth - b.depth);
+}
+// vài bông đè lên bốn góc tấm ảnh
+function rim(r, n) {
+  const corners = [[0.24, 0.14], [0.76, 0.16], [0.22, 0.86], [0.78, 0.84]];
+  return Array.from({ length: n }, (_, i) => {
+    const [cx, cy] = corners[i % 4];
+    return { x: cx + (r() - 0.5) * 0.1, y: cy + (r() - 0.5) * 0.08, h: 0.1 + r() * 0.07, depth: 1, foliage: r() < 0.3, rot: r() * 6.283 };
+  });
+}
+const LAYOUTS = { meadow, frame, strip, bed, rim };
+const TOP_DOWN = new Set(["bed", "rim"]);
 const BOTTOM_CENTER = [0.5, 1];
 
 export default function BloomField({ layout = "meadow", count = 160, mobileCount, seed = 1, origin = BOTTOM_CENTER, burst = true, className = "", onProgress }) {
@@ -87,7 +106,7 @@ export default function BloomField({ layout = "meadow", count = 160, mobileCount
         bounce: 0,
       };
     });
-    plants.sort((a, b) => a.y - b.y);
+    if (!TOP_DOWN.has(layout)) plants.sort((a, b) => a.y - b.y);
 
     let W = 0, H = 0, dpr = 1, raf = 0, start = 0, visible = false, running = false, lastProgress = -1;
     const imgs = new Map();
@@ -136,6 +155,22 @@ export default function BloomField({ layout = "meadow", count = 160, mobileCount
         p.push += (p.pushT - p.push) * 0.12;
         p.bounce *= 0.93;
         const sway = Math.sin(now * p.speed + p.phase) * p.amp + gust + p.push + Math.sin(now * 0.02) * p.bounce;
+        if (TOP_DOWN.has(layout)) {
+          // nhìn từ trên xuống: chỉ thấy đầu hoa, xoay tự do
+          const M = Math.min(W, H), size = p.h * M * 1.6;
+          ctx.save();
+          ctx.translate(bx, by);
+          ctx.rotate(p.rot + sway * 0.8);
+          ctx.scale(grow * (p.flip ? -1 : 1), grow);
+          const k = pair.width / 360;
+          const crop = p.foliage ? [0, 0, pair.width, pair.height] : [40 * k, 90 * k, 280 * k, 280 * k];
+          const dw = p.foliage ? size * 0.6 : size, dh = p.foliage ? size * 1.07 : size;
+          ctx.globalAlpha = 0.85 + p.depth * 0.15;
+          if (colorA < 1 && sk) { ctx.save(); ctx.globalAlpha *= 1 - colorA * 0.6; ctx.drawImage(sk, ...crop, -dw / 2, -dh / 2, dw, dh); ctx.restore(); }
+          if (colorA > 0) { ctx.globalAlpha *= colorA; ctx.drawImage(pair, ...crop, -dw / 2, -dh / 2, dw, dh); }
+          ctx.restore();
+          continue;
+        }
         ctx.save();
         ctx.translate(bx, by);
         ctx.rotate(sway);

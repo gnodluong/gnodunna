@@ -14,6 +14,7 @@ const HERO_ORIGIN = [0.5, 0.95];
 const FINALE_ORIGIN = [0.5, 1];
 const SKY_AREA = [0.05, 0.05, 0.85, 0.4];
 const LOW_AREA = [0.05, 0.35, 0.85, 0.45];
+const SCENE_AREA = [0.05, 0.05, 0.85, 0.8];
 
 // khung ảnh trống chỉ hiện khi xem trước (?xem-truoc), để trang không lộ chỗ trống
 const PREVIEW = typeof window !== "undefined" && /xem-truoc/.test(window.location.search + window.location.hash);
@@ -59,32 +60,44 @@ function HeroGarden() {
   );
 }
 
+const RIM_ORIGIN = [0.5, 0.5];
+
+// Góc máy điện ảnh: cẩu máy từ nghiêng sang nhìn thẳng xuống thảm hoa, tấm ảnh rơi xuống nằm giữa hoa
 function Plate({ index, photo, caption }) {
+  const ref = useRef(null);
   const flip = index % 2 === 1;
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const io = new IntersectionObserver(([e]) => {
+      if (e.isIntersecting) { el.classList.add("dropped"); io.disconnect(); }
+    }, { threshold: 0.4 });
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
   if (!photo && !PREVIEW) return null;
   return (
-    <figure className={`plate-wrap ${flip ? "flip" : ""}`}>
-      <div className="field-box plate-back">
-        <BloomField layout="frame" count={60} mobileCount={36} seed={100 + index * 7} burst={false} />
-      </div>
-      <div className="plate">
-        <div className="plate-head">
-          <span>FLORA &amp; AMOR ILLUSTRATA</span>
-          <span>FIG. {ROMAN[index]} — TAB. {index + 1}</span>
+    <figure ref={ref} className={`scene ${flip ? "flip" : ""}`}>
+      <div className="stage">
+        <div className="field-box bed">
+          <BloomField layout="bed" count={90} mobileCount={56} seed={100 + index * 7} origin={RIM_ORIGIN} burst={false} />
         </div>
-        <div className="plate-photo">
-          {photo ? <img src={photo} alt={caption} loading="lazy" /> : <div className="plate-empty">Ảnh {index + 1}</div>}
-          <span className="corner tl" /><span className="corner tr" /><span className="corner bl" /><span className="corner br" />
+        <div className="print-shadow" />
+        <div className="print">
+          <div className="print-photo">
+            {photo ? <img src={photo} alt={caption} loading="lazy" /> : <div className="plate-empty">Ảnh {index + 1}</div>}
+          </div>
+          <figcaption>
+            <span className="print-fig">FIG. {ROMAN[index]}</span>
+            <em>{caption}</em>
+          </figcaption>
+          <PerchedBird kind={PERCHERS[index % PERCHERS.length]} left={flip ? "60%" : "16%"} size={70} flip={flip} delay={index * 300} />
         </div>
-        <figcaption>
-          <em>Memoria {ROMAN[index]}</em>
-          <span>{caption}</span>
-        </figcaption>
-        <PerchedBird kind={PERCHERS[index % PERCHERS.length]} left={flip ? "62%" : "18%"} size={78} flip={flip} delay={index * 300} />
+        <div className="field-box rim">
+          <BloomField layout="rim" count={10} mobileCount={8} seed={300 + index * 11} origin={RIM_ORIGIN} burst={false} />
+        </div>
       </div>
-      <div className="field-box plate-front">
-        <BloomField layout="strip" count={22} mobileCount={14} seed={300 + index * 11} burst={false} />
-      </div>
+      <Hoverer kind={["blue", "rose", "lemon", "peach"][index % 4]} butterfly size={40} area={SCENE_AREA} />
     </figure>
   );
 }
