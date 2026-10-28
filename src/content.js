@@ -155,3 +155,102 @@ export const springAfter = [
   { text: "Chúc mừng 20/10, cô gái của Đông.", size: "xxl", rainbow: true },
   { text: "20 - 10 - 2026", size: "lg" },
 ];
+
+// Kỷ niệm 1 năm 9 tháng — 28/10/2026. Mỗi chương đi kèm một tấm ảnh.
+export const annivIntro = [
+  { text: "Tiên ơi,", size: "xl", special: true },
+  { text: "Hôm nay là 28/10.", size: "md" },
+  { text: "Tròn một năm chín tháng kể từ ngày 28/1/2025,", size: "lg" },
+  { text: "cái ngày tụi mình bắt đầu viết chung một câu chuyện.", size: "xl", special: true },
+];
+
+export const annivChapters = [
+  {
+    caption: "Khoảnh khắc thứ nhất",
+    lines: [
+      { text: "Nếu ai hỏi 638 ngày dài cỡ nào,", size: "md" },
+      { text: "Đông sẽ nói: đủ để Đông thuộc lòng nụ cười của Tiên,", size: "lg" },
+      { text: "thuộc luôn cả cái cách Tiên nhíu mày lúc giận mà vẫn dễ thương.", size: "md" },
+    ],
+  },
+  {
+    caption: "Khoảnh khắc thứ hai",
+    lines: [
+      { text: "Hồi mới quen, Đông đâu có nghĩ", size: "md" },
+      { text: "sẽ có ngày mình thương một người nhiều tới vậy.", size: "lg" },
+      { text: "Thương tới mức chuyện nhỏ xíu của Tiên cũng thành chuyện lớn của Đông.", size: "md" },
+    ],
+  },
+  {
+    caption: "Khoảnh khắc thứ ba",
+    lines: [
+      { text: "Tụi mình đã đi qua những ngày nắng gắt, những cơn mưa bất chợt,", size: "md" },
+      { text: "đi qua cả những cái Tết có nhau.", size: "lg" },
+      { text: "Tấm ảnh nào ở đây Đông cũng nhớ hôm đó tụi mình cười vì chuyện gì.", size: "md" },
+    ],
+  },
+  {
+    caption: "Khoảnh khắc thứ tư",
+    lines: [
+      { text: "Rồi tới ngày Đông lên đường nhập ngũ.", size: "lg" },
+      { text: "Đông biết hôm đó Tiên đã cố cười để Đông yên tâm.", size: "md" },
+      { text: "Đông cũng vậy. Hai đứa giỏi giả bộ mạnh mẽ ghê.", size: "md" },
+    ],
+  },
+  {
+    caption: "Khoảnh khắc thứ năm",
+    lines: [
+      { text: "Từ ngày đó, tuần nào Tiên cũng lặn lội lên thăm Đông.", size: "lg" },
+      { text: "Mỗi lần thấy Tiên từ xa đi tới,", size: "md" },
+      { text: "bao nhiêu mệt mỏi cả tuần của Đông tan đâu mất hết.", size: "lg" },
+    ],
+  },
+  {
+    caption: "Khoảnh khắc thứ sáu",
+    lines: [
+      { text: "Đông biết ở ngoài kia Tiên cũng vất vả lắm.", size: "md" },
+      { text: "Vừa lo công việc, vừa lo cho Đông, vừa tự mình đi qua những đêm nhớ nhau.", size: "md" },
+      { text: "Cảm ơn Tiên đã không buông tay.", size: "xl", special: true },
+    ],
+  },
+  {
+    caption: "Khoảnh khắc thứ bảy",
+    lines: [
+      { text: "Có những ngày tụi mình giận nhau, chẳng ai chịu ai.", size: "md" },
+      { text: "Nhưng giận xong, người tìm lại nhau vẫn luôn là tụi mình.", size: "lg" },
+      { text: "Đông nghĩ đó mới là điều quý nhất.", size: "md" },
+    ],
+  },
+  {
+    caption: "Khoảnh khắc thứ tám",
+    lines: [
+      { text: "Tháng Mười này Tiên vừa thêm một tuổi,", size: "md" },
+      { text: "vừa qua 20/10, giờ lại tới ngày kỷ niệm.", size: "md" },
+      { text: "Tháng Mười năm nay toàn là ngày của Tiên hết.", size: "lg", special: true },
+    ],
+  },
+  {
+    caption: "Khoảnh khắc thứ chín",
+    lines: [
+      { text: "Đông không hứa những điều quá xa xôi.", size: "md" },
+      { text: "Đông chỉ hứa: mỗi ngày, Đông sẽ thương Tiên thêm một chút,", size: "lg" },
+      { text: "kiên nhẫn thêm một chút, và cố gắng thêm một chút cho tương lai của hai đứa.", size: "md" },
+    ],
+  },
+  {
+    caption: "Khoảnh khắc thứ mười",
+    lines: [
+      { text: "Rồi sẽ tới ngày Đông về.", size: "lg" },
+      { text: "Lúc đó Đông muốn dắt Tiên đi hết những nơi tụi mình từng hẹn,", size: "md" },
+      { text: "chụp thêm thật nhiều tấm ảnh như vầy, để cuốn album của tụi mình dày thêm mãi.", size: "md" },
+    ],
+  },
+];
+
+export const annivClosing = [
+  { text: "Một năm chín tháng.", size: "xl", special: true },
+  { text: "Cảm ơn Tiên vì đã chọn Đông,", size: "lg" },
+  { text: "và vẫn tiếp tục chọn Đông mỗi ngày.", size: "xl", special: true },
+  { text: "Đông thương Tiên nhiều hơn những gì cả vườn hoa này nói được.", size: "lg" },
+  { text: "Chúc mừng kỷ niệm của tụi mình.", size: "xxl", special: true },
+];
