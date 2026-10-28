@@ -87,10 +87,6 @@ function Plate({ index, photo, caption }) {
           <div className="print-photo">
             {photo ? <img src={photo} alt={caption} loading="lazy" /> : <div className="plate-empty">Ảnh {index + 1}</div>}
           </div>
-          <figcaption>
-            <span className="print-fig">FIG. {ROMAN[index]}</span>
-            <em>{caption}</em>
-          </figcaption>
           <PerchedBird kind={PERCHERS[index % PERCHERS.length]} left={flip ? "60%" : "16%"} size={70} flip={flip} delay={index * 300} />
         </div>
         <div className="field-box rim">

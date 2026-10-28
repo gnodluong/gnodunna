@@ -701,7 +701,7 @@
   top: 50%;
   z-index: 3;
   width: min(60%, 440px);
-  padding: 12px 12px 0;
+  padding: 12px 12px 34px;
   background: #fbf7ee;
   box-shadow: 0 1px 2px rgba(60, 40, 20, 0.25), 0 0 0 1px rgba(90, 70, 50, 0.12);
   --rest: -4deg;
@@ -787,7 +787,7 @@
 
 @media (max-width: 600px) {
   .scene { height: clamp(460px, 80vh, 640px); perspective: 800px; }
-  .print { width: 50%; padding: 7px 7px 0; }
+  .print { width: 50%; padding: 7px 7px 22px; }
   .print-shadow { width: 48%; }
   .print-photo img { max-height: 46vh; }
   .stage { inset: -6% -24%; }
