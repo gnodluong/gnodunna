@@ -7,7 +7,6 @@ import { annivIntro, annivChapters, annivClosing } from "../content";
 import paper from "../assets/anniv/paper.webp";
 import "./anniv.css";
 
-const ROMAN = ["I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X"];
 const START = new Date(2025, 0, 28);
 const PERCHERS = ["robin", "bluetit", "goldfinch", "sparrow"];
 const HERO_ORIGIN = [0.5, 0.95];
