@@ -39,7 +39,7 @@ export default function ReasonsSection() {
         </div>
         <p className="reasons-kicker">Ghi chép từ sổ tay của Tiên</p>
         <h2>Những lý do Đông ghiền Tiên</h2>
-        <p className="reasons-sub">Đông đọc hết từng trang Tiên viết, rồi ép lại thành một bộ sưu tập.</p>
+        <p className="reasons-sub">Đông đọc hết sổ của Tiên rồi, ghi lại mấy cái làm Đông ghiền nè.</p>
       </header>
       <ol className="specimens">
         {reasons.map((r, i) => (
@@ -47,9 +47,8 @@ export default function ReasonsSection() {
         ))}
       </ol>
       <div className="reasons-end">
-        <p>Danh sách này chưa xong đâu. Tiên viết thêm trang nào, Đông ép thêm bông đó.</p>
-        <p>Lý do lớn nhất thì không cần ghi: vì đó là Tiên.</p>
-        <p className="love">Đông thương Tiên nhiều lắm, nhiều lắm, nhiều lắm.</p>
+        <p>Còn nữa, Đông ghi tiếp sau.</p>
+        <p className="love">Thương Tiên nhiều lắm.</p>
       </div>
     </section>
   );
