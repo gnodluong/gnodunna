@@ -136,6 +136,111 @@
   color: #a8344a;
 }
 
+/* ---- 100 điều ---- */
+.hundred {
+  max-width: 760px;
+  margin: 5rem auto 0;
+  padding: 1.4rem clamp(1rem, 4vw, 2rem) 2rem;
+  background: rgba(250, 245, 232, 0.94);
+  border: 1px solid rgba(90, 70, 50, 0.4);
+  outline: 1px solid rgba(90, 70, 50, 0.22);
+  outline-offset: -7px;
+  box-shadow: 0 14px 32px rgba(70, 50, 30, 0.18);
+  transform: rotate(-0.4deg);
+}
+
+.hundred-title {
+  margin: 0.8rem 0 1rem;
+  text-align: center;
+  font-family: "Dancing Script", cursive;
+  font-size: clamp(2rem, 7vw, 3rem);
+  color: #a8344a;
+}
+
+.hundred-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.hundred-list li {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  min-height: 2.35rem;
+  padding: 0.35rem 0;
+  border-bottom: 1px solid rgba(110, 140, 170, 0.25);
+  font-size: 1.18rem;
+  line-height: 1.4;
+  color: #3f2f24;
+  animation: h-pop 0.5s ease both;
+  animation-delay: var(--d);
+}
+
+.hundred-list img {
+  flex: none;
+  width: 22px;
+  height: 34px;
+  object-fit: cover;
+  object-position: 50% 15%;
+}
+
+.h-no {
+  flex: none;
+  min-width: 2rem;
+  font-style: italic;
+  font-weight: 700;
+  color: #a8344a;
+  text-align: right;
+}
+
+.h-no.big {
+  display: block;
+  margin: 0 auto 0.4rem;
+  font-size: 3rem;
+  text-align: center;
+}
+
+@keyframes h-pop {
+  from { opacity: 0; transform: translateX(-10px); }
+}
+
+.hundred-more {
+  display: block;
+  margin: 1.4rem auto 0;
+  min-height: 46px;
+  padding: 0.5rem 1.5rem;
+  border: none;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #b8435a, #8f2a3e);
+  box-shadow: 0 6px 18px rgba(143, 42, 62, 0.3);
+  font-family: inherit;
+  font-style: italic;
+  font-weight: 700;
+  font-size: 1.15rem;
+  color: #fff8ee;
+  cursor: pointer;
+}
+
+.hundred-more:focus-visible {
+  outline: 2px solid #a8344a;
+  outline-offset: 3px;
+}
+
+.hundred-last {
+  margin: 2rem 0 0;
+  padding: 1.2rem 1rem;
+  border-radius: 12px;
+  background: rgba(255, 228, 234, 0.6);
+  text-align: center;
+  font-family: "Dancing Script", cursive;
+  font-size: clamp(1.4rem, 4.4vw, 1.9rem);
+  line-height: 1.5;
+  color: #6b2234;
+  animation: h-pop 0.8s ease both;
+}
+
 @media (prefers-reduced-motion: reduce) {
+  .hundred-list li, .hundred-last { animation: none; }
   .specimen { opacity: 1; transform: none; transition: none; }
 }

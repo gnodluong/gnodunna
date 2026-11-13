@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { FLOWERS } from "../anniv/sprites";
-import { reasons } from "./reasons";
+import { reasons, hundred } from "./reasons";
 import paper from "../assets/anniv/paper.webp";
 import "./reasons.css";
 
@@ -29,6 +29,47 @@ function Specimen({ r, i }) {
   );
 }
 
+const BULLETS = ["rose", "cosmos", "forgetmenot", "daisy", "sweetpea", "tulip", "peony", "anemone"];
+const STEP = 20;
+
+// 100 điều Đông thương ở Tiên: trang giấy kẻ dòng, mở dần từng đợt
+function Hundred() {
+  const [shown, setShown] = useState(STEP);
+  const list = hundred.slice(0, -1);
+  const last = hundred[hundred.length - 1];
+  return (
+    <div className="hundred">
+      <div className="plate-head">
+        <span>CENTUM CAUSAE</span>
+        <span>{Math.min(shown, list.length)}/100</span>
+      </div>
+      <h3 className="hundred-title">100 điều Đông thương ở Tiên</h3>
+      <ol className="hundred-list">
+        {list.slice(0, shown).map((t, i) => {
+          const f = FLOWERS[BULLETS[i % BULLETS.length]] || [];
+          return (
+            <li key={i} style={{ "--d": `${(i % STEP) * 40}ms` }}>
+              <span className="h-no">{i + 1}</span>
+              {f[0] && <img src={f[(i >> 3) % f.length].color} alt="" loading="lazy" />}
+              <span className="h-text">{t}</span>
+            </li>
+          );
+        })}
+      </ol>
+      {shown < list.length ? (
+        <button type="button" className="hundred-more" onClick={() => setShown((n) => n + STEP)}>
+          Xem thêm {Math.min(STEP, list.length - shown)} điều nữa nè
+        </button>
+      ) : (
+        <p className="hundred-last">
+          <span className="h-no big">100</span>
+          {last}
+        </p>
+      )}
+    </div>
+  );
+}
+
 export default function ReasonsSection() {
   return (
     <section className="reasons" id="ly-do" style={{ "--paper": `url(${paper})` }}>
@@ -46,6 +87,7 @@ export default function ReasonsSection() {
           <Specimen key={i} r={r} i={i} />
         ))}
       </ol>
+      <Hundred />
       <div className="reasons-end">
         <p>Còn nữa, Đông ghi tiếp sau.</p>
         <p className="love">Thương Tiên nhiều lắm.</p>
