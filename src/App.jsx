@@ -6,6 +6,7 @@ import BackgroundMusic from "./BackgroundMusic";
 import SpringSection from "./spring/SpringSection";
 import CloudTransition from "./spring/CloudTransition";
 import AnnivSection from "./anniv/AnnivSection";
+import ReasonsSection from "./reasons/ReasonsSection";
 import PaperTransition from "./anniv/PaperTransition";
 import { letter, letter2 } from "./content";
 import "./App.css";
@@ -76,6 +77,7 @@ export default function App() {
             <li><a href="#sinh-nhat"><span className="toc-num">III</span>Chúc mừng sinh nhật · 3/10</a></li>
             <li><a href="#hoa-20-10" onClick={flyToSpring}><span className="toc-num">IV</span>Vườn hoa 20/10</a></li>
             <li><a href="#ky-niem" onClick={openAnniv}><span className="toc-num">V</span>Một năm chín tháng · 28/10</a></li>
+            <li><a href="#ly-do"><span className="toc-num">VI</span>Những lý do Đông ghiền Tiên</a></li>
           </ol>
         </nav>
         <div className="scroll-hint">cuộn xuống để đọc ↓</div>
@@ -105,6 +107,7 @@ export default function App() {
 
       <SpringSection />
       <AnnivSection />
+      <ReasonsSection />
       <CloudTransition phase={cloudPhase} />
       <PaperTransition phase={paper.phase} x={paper.x} y={paper.y} />
     </div>
