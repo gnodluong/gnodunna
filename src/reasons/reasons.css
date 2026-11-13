@@ -118,6 +118,15 @@
   color: #4e3b2e;
 }
 
+.reasons-end p {
+  margin: 0 0 0.6rem;
+}
+
+.reasons-end .love {
+  font-size: 1.3em;
+  font-weight: 700;
+}
+
 .reasons-end {
   max-width: 640px;
   margin: 4rem auto 0;

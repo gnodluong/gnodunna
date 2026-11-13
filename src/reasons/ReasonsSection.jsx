@@ -46,7 +46,11 @@ export default function ReasonsSection() {
           <Specimen key={i} r={r} i={i} />
         ))}
       </ol>
-      <p className="reasons-end">Danh sách này chưa xong đâu. Tiên viết thêm trang nào, Đông ép thêm bông đó.</p>
+      <div className="reasons-end">
+        <p>Danh sách này chưa xong đâu. Tiên viết thêm trang nào, Đông ép thêm bông đó.</p>
+        <p>Lý do lớn nhất thì không cần ghi: vì đó là Tiên.</p>
+        <p className="love">Đông thương Tiên nhiều lắm, nhiều lắm, nhiều lắm.</p>
+      </div>
     </section>
   );
 }
